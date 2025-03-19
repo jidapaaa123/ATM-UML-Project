@@ -1,10 +1,10 @@
 namespace Logic
 {
-	class ATM()
+	class ATM(BankServer bankServer)
 	{
 		public bool cardInserted { get; set; } = false;
 		public bool pinValidated { get; set; } = false;
-		BankServer bankServer { get; set; } = new();
+		BankServer bankServer { get; set; } = bankServer;
 		string currentCardNumber { get; set; } = "";
 		ATMAction currentAction { get; set; } = ATMAction.None;
 		public void insertCard(string cardNumber) {
@@ -13,13 +13,11 @@ namespace Logic
 		}
 		public bool enterPin(int pin) {
 			Console.Write("Enter your pin: ");
-			if (!bankServer.verifyPin(Console.ReadLine()))
-			{
+			if (!bankServer.verifyPin(Console.ReadLine())) {
 				Console.WriteLine("Invalid pin. Please try again.");
 				return false;
 			}
-			else
-			{
+			else {
 				pinValidated = true;
 				return true;
 			}
