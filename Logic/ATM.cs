@@ -4,7 +4,7 @@ namespace Logic
 	{
 		public bool cardInserted { get; set; } = false;
 		public bool pinValidated { get; set; } = false;
-		bankServer BankServer { get; set; } = new();
+		BankServer bankServer { get; set; } = new();
 		string currentCardNumber { get; set; } = "";
 		ATMAction currentAction { get; set; } = ATMAction.None;
 		public void insertCard(string cardNumber) {
@@ -13,7 +13,7 @@ namespace Logic
 		}
 		public bool enterPin(int pin) {
 			Console.Write("Enter your pin: ");
-			if (!BankServer.verifyPin(Console.ReadLine()))
+			if (!bankServer.verifyPin(Console.ReadLine()))
 			{
 				Console.WriteLine("Invalid pin. Please try again.");
 				return false;
@@ -32,11 +32,11 @@ namespace Logic
             } else if (amount <= 0) {
                 Console.WriteLine("Amount must be greater than 0. Please try again.");
                 return false;
-            } else if (amount > BankServer.checkBalance(currentCardNumber)) {
+            } else if (amount > bankServer.checkBalance(currentCardNumber)) {
                 Console.WriteLine("Insufficient funds. Please try again.");
                 return false;
             } else {
-                BankServer.withdraw(currentCardNumber, amount);
+                bankServer.withdraw(currentCardNumber, amount);
                 return true;
             }
         }
@@ -44,7 +44,7 @@ namespace Logic
 			Console.WriteLine($"Please take your cash.");
 		}
 		public void checkBalance() {
-			Console.WriteLine($"Current active balance for account {0:30}: {1:24}", currentCardNumber, BankServer.checkBalance(currentCardNumber));
+			Console.WriteLine($"Current active balance for account {0:30}: {1:24}", currentCardNumber, bankServer.checkBalance(currentCardNumber));
 		}
 		public void ejectCard() {
 			cardInserted = false;
