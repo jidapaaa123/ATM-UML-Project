@@ -16,8 +16,7 @@ namespace Logic
 			if (!bankServer.verifyPin(Console.ReadLine())) {
 				Console.WriteLine("Invalid pin. Please try again.");
 				return false;
-			}
-			else {
+			} else {
 				pinValidated = true;
 				return true;
 			}
