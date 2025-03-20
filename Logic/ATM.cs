@@ -33,7 +33,7 @@ namespace Logic
                 Console.WriteLine("Insufficient funds. Please try again.");
                 return false;
             } else {
-                bankServer.withdraw(currentCardNumber, amount);
+                bankServer.processTransaction(currentCardNumber, amount);
                 return true;
             }
         }
