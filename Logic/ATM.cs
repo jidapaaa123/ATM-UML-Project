@@ -50,6 +50,25 @@ namespace Logic
 			currentCardNumber = "";
 			pinValidated = false;
 		}
-		// ATMAction getNextAction() => currentAction != ATMAction.End ? currentAction++ : ATMAction.None;
-	}
+        // ATMAction getNextAction() => currentAction != ATMAction.End ? currentAction++ : ATMAction.None;
+
+        public enum ATMAction
+        {
+            InsertCard,
+            EnterPIN,
+            DisplayOptions
+        }
+
+
+
+        public ATMAction GetNextAction()
+        {
+            if (!cardInserted)
+                return ATMAction.InsertCard;
+            else if (!pinValidated)
+                return ATMAction.EnterPIN;
+            else
+                return ATMAction.DisplayOptions;
+        }
+    }
 }
