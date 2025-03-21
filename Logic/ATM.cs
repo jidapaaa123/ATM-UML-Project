@@ -11,9 +11,9 @@ namespace Logic
 			cardInserted = true;
 			currentCardNumber = cardNumber;
 		}
-		public bool enterPin(int pin) {
+		public bool enterPin() {
 			Console.Write("Enter your pin: ");
-			if (int.TryParse(Console.ReadLine(), out pin)) {
+			if (int.TryParse(Console.ReadLine(), out int pin)) {
 				if (!bankServer.verifyPIN(currentCardNumber, pin)) {
 					Console.WriteLine("Invalid pin. Please try again.");
 				} else {
