@@ -13,9 +13,16 @@ public class BankAccount
         }
     }
 
-    public void withdraw(double amount)
+    public bool withdraw(double amount)
     {
         balance -= amount;
+        if (balance > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     public double getBalance()
