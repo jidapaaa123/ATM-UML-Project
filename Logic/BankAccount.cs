@@ -4,16 +4,29 @@ public class BankAccount
 
     public bool hasSufficientFunds(double amount)
     {
-        throw new NotImplementedException();
+        if(amount <= balance){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool withdraw(double amount)
     {
-        throw new NotImplementedException();
+        balance -= amount;
+        if (balance > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     public double getBalance()
     {
-        throw new NotImplementedException();
+        return balance;
     }
 }
