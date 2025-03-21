@@ -6,24 +6,26 @@ namespace Logic
 		public bool pinValidated { get; set; } = false;
 		BankServer bankServer { get; set; } = bankServer;
 		string currentCardNumber { get; set; } = "";
-		ATMAction currentAction { get; set; } = ATMAction.None;
+		// ATMAction currentAction { get; set; } = ATMAction.None;
 		public void insertCard(string cardNumber) {
 			cardInserted = true;
 			currentCardNumber = cardNumber;
 		}
 		public bool enterPin(int pin) {
 			Console.Write("Enter your pin: ");
-			if (!bankServer.verifyPin(Console.ReadLine())) {
-				Console.WriteLine("Invalid pin. Please try again.");
-				return false;
-			} else {
-				pinValidated = true;
-				return true;
+			if (int.TryParse(Console.ReadLine(), out pin)) {
+				if (!bankServer.verifyPIN(currentCardNumber, pin)) {
+					Console.WriteLine("Invalid pin. Please try again.");
+				} else {
+					pinValidated = true;
+					return true;
+				}
 			}
+			return false;
 		}
 		public bool requestAmount() {
 			Console.Write("Enter the amount you want to withdraw: ");
-            if (!decimal.TryParse(Console.ReadLine(), out decimal amount)) {
+            if (!double.TryParse(Console.ReadLine(), out double amount)) {
                 Console.WriteLine("Invalid amount. Please try again.");
                 return false;
             } else if (amount <= 0) {
@@ -48,6 +50,6 @@ namespace Logic
 			currentCardNumber = "";
 			pinValidated = false;
 		}
-		ATMAction getNextAction() => currentAction != ATMAction.End ? currentAction++ : ATMAction.None;
+		// ATMAction getNextAction() => currentAction != ATMAction.End ? currentAction++ : ATMAction.None;
 	}
 }
