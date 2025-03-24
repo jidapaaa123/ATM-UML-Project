@@ -1,3 +1,4 @@
+namespace Logic;
 public class BankAccount
 {
     private double balance;

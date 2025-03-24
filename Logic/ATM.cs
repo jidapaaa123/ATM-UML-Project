@@ -1,13 +1,20 @@
 namespace Logic
 {
-	class ATM(BankServer bankServer)
+	public class ATM // I am making some changes. Ill create aconstructor for ATM 
 	{
+		
 		public bool cardInserted { get; set; } = false;
 		public bool pinValidated { get; set; } = false;
-		BankServer bankServer { get; set; } = bankServer;
+
+		private BankServer bankServer;
 		string currentCardNumber { get; set; } = "";
 		// ATMAction currentAction { get; set; } = ATMAction.None;
-		public void insertCard(string cardNumber) {
+
+		public ATM(BankServer bankServer)
+        {
+            this.bankServer = bankServer;
+        }
+        public void insertCard(string cardNumber) {
 			cardInserted = true;
 			currentCardNumber = cardNumber;
 		}
