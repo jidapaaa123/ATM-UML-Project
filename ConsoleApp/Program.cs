@@ -61,7 +61,7 @@ public class  Program
             }
 
             static void HandleEnterPIN(ATM atm) { 
-                if (atm.enterPin(0)) { Console.WriteLine("PIN invalid"); } else { Console.WriteLine("YOU failed! try 1234 "); }
+                if (atm.enterPin()) { Console.WriteLine("PIN invalid"); } else { Console.WriteLine("YOU failed! try 1234 "); }
 
             }
             static void HandleDisplayOptions(ATM atm)
