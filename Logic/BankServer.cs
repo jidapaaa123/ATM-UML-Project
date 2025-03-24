@@ -17,7 +17,7 @@ public class BankServer
 
     public bool verifyPIN(string cardNumber, int pin)
     {
-        return validCards[cardNumber].pin == pin;
+        return verifyCard(cardNumber) && validCards[cardNumber].pin == pin;
     }
 
     public bool processTransaction(string cardNumber, double amount)
