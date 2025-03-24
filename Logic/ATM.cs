@@ -50,7 +50,7 @@ namespace Logic
 			Console.WriteLine($"Please take your cash.");
 		}
 		public void checkBalance() {
-			Console.WriteLine($"Current active balance for account {0:30}: {1:24}", currentCardNumber, bankServer.checkBalance(currentCardNumber));
+			Console.WriteLine($"Current active balance for account {currentCardNumber}: {bankServer.checkBalance(currentCardNumber), -24}");
 		}
 		public void ejectCard() {
 			cardInserted = false;
