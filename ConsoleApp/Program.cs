@@ -2,11 +2,10 @@
 using Logic;
 using static Logic.ATM;
 
-namespace program {
 
-    class  Program
+public class  Program
     {
-        void Main() { 
+        public static void Main() { 
         
           var initialCards = new Dictionary<string, (int pin, BankAccount accoutn)>
           { 
@@ -48,7 +47,8 @@ namespace program {
             {
                 Console.Write("Please insert your card: ");
                 string cardNumber = Console.ReadLine();
-                if (atm.cardInserted)
+                atm.insertCard(cardNumber);
+            if (atm.cardInserted)
                 {
                     Console.WriteLine("Card inserted successfully.");
                     return;
@@ -95,9 +95,5 @@ namespace program {
             }
 
         }
-    }
+ }
 
-
-
-
-}
