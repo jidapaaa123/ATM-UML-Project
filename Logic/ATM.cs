@@ -18,9 +18,9 @@ namespace Logic
 			cardInserted = true;
 			currentCardNumber = cardNumber;
 		}
-		public bool enterPin(int pin) {
+		public bool enterPin() {
 			Console.Write("Enter your pin: ");
-			if (int.TryParse(Console.ReadLine(), out pin)) {
+			if (int.TryParse(Console.ReadLine(), out int pin)) {
 				if (!bankServer.verifyPIN(currentCardNumber, pin)) {
 					Console.WriteLine("Invalid pin. Please try again.");
 				} else {
@@ -30,20 +30,20 @@ namespace Logic
 			}
 			return false;
 		}
-		public bool requestAmount() {
+		public void requestAmount() {
 			Console.Write("Enter the amount you want to withdraw: ");
             if (!double.TryParse(Console.ReadLine(), out double amount)) {
                 Console.WriteLine("Invalid amount. Please try again.");
-                return false;
+                return;
             } else if (amount <= 0) {
                 Console.WriteLine("Amount must be greater than 0. Please try again.");
-                return false;
+                return;
             } else if (amount > bankServer.checkBalance(currentCardNumber)) {
                 Console.WriteLine("Insufficient funds. Please try again.");
-                return false;
+                return;
             } else {
                 bankServer.processTransaction(currentCardNumber, amount);
-                return true;
+                return;
             }
         }
 		public void dispenseCash() {
