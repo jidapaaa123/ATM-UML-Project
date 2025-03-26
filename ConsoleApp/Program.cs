@@ -27,7 +27,7 @@ public class  Program
                 {
 
                     case ATMAction.InsertCard:
-                        HandleInsertCard(atm);
+                        HandleInsertCard(atm, bankServer);
                         break;
                     case ATMAction.EnterPIN:
                         HandleEnterPIN(atm);
@@ -43,13 +43,14 @@ public class  Program
 
              }
 
-            static void HandleInsertCard(ATM atm)
+            static void HandleInsertCard(ATM atm, BankServer? bankServer)
             {
                 Console.Write("Please insert your card: ");
                 string cardNumber = Console.ReadLine();
-                atm.insertCard(cardNumber);
-            if (atm.cardInserted)
+               // atm.insertCard(cardNumber);
+            if (bankServer.verifyCard(cardNumber))
                 {
+                    atm.insertCard(cardNumber);
                     Console.WriteLine("Card inserted successfully.");
                     return;
                 }
@@ -60,9 +61,29 @@ public class  Program
 
             }
 
+         /*  static void HandleEnterPIN(ATM atm)
+        {
+            if (atm.enterPin()) { Console.WriteLine("PIN invalid"); }
+
+            else { Console.WriteLine("YOU failed! try 1234 "); }
+
+        }*/
             static void HandleEnterPIN(ATM atm) {
             atm.enterPin();
 
+        static void HandleEnterPIN(ATM atm)
+        {
+            atm.enterPin();
+            if (atm.pinValidated)
+            {
+                Console.WriteLine("PIN validated successfully.");
+                return;
+            }
+        }
+
+
+          
+        static void HandleDisplayOptions(ATM atm)
         }
             static void HandleDisplayOptions(ATM atm)
             {
