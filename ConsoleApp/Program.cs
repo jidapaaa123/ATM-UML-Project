@@ -68,6 +68,8 @@ public class  Program
             else { Console.WriteLine("YOU failed! try 1234 "); }
 
         }*/
+            static void HandleEnterPIN(ATM atm) {
+            atm.enterPin();
 
         static void HandleEnterPIN(ATM atm)
         {
@@ -82,6 +84,8 @@ public class  Program
 
           
         static void HandleDisplayOptions(ATM atm)
+        }
+            static void HandleDisplayOptions(ATM atm)
             {
                 Console.WriteLine("1. Withdraw cash");
                 Console.WriteLine("2. Check balance");
